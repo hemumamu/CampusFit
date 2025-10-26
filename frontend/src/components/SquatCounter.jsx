@@ -13,8 +13,8 @@ const REQUIRED_COUNT = 3;
 const HIP_ABOVE_ANKLE_MIN_DIFF = 90; // Adjust as needed for your scene/camera
 
 const SquatCounter = () => {
-    const API=import.meta.env.API
-    const navigate=useNavigate()
+    const API = import.meta.env.VITE_API
+    const navigate = useNavigate()
     const videoRef = useRef(null);
     const canvasRef = useRef(null);
     const poseLandmarkerRef = useRef(null);
@@ -235,7 +235,7 @@ const SquatCounter = () => {
                     <li>Stand upright and fully visible</li>
                     <li>Only rising to full standing (hips above ankles) counts a rep.</li>
                     <li>Sitting or cheat-moves (hips near ankles) won’t be counted!</li>
-                    
+
                 </ul>
             </div>
         </div>

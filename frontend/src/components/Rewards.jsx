@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 const Rewards = ({ user, setUser }) => {
-    const API=import.meta.env.API
+    const API = import.meta.env.VITE_API
 
     const [activeReward, setActiveReward] = useState("fitpointsReward")
     const [claimedStreakRewards, setClaimedStreakRewards] = useState([])
@@ -66,7 +66,7 @@ const Rewards = ({ user, setUser }) => {
 
             </div>
             <div className='div1'>
-                <h1 >Reward Section</h1>                
+                <h1 >Reward Section</h1>
             </div>
             <div className="rewardToggleContainer">
                 <button

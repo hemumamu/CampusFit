@@ -31,7 +31,7 @@ import './SignIn.css'
 
 
 const SignIn = () => {
-    const API=import.meta.env.API
+    const API=import.meta.env.VITE_API
     const navigate = useNavigate()
 
     const [form, setForm] = useState({ email: "", password: "" })

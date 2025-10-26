@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import SquatCounter from './SquatCounter.jsx'
 
 const Tasks = ({ user, setUser }) => {
-    const API=import.meta.env.API
+    const API = import.meta.env.VITE_API
     const navigate = useNavigate()
     const [completedTasks, setCompletedTasks] = useState([]);
     useEffect(() => {
@@ -68,14 +68,14 @@ const Tasks = ({ user, setUser }) => {
                 </div>
 
             </div>
-             <div className='div1'>
+            <div className='div1'>
                 <h1 >Tasks Section</h1>
             </div>
             <div className='main'>
 
                 <div className='taskssection'>
-                    
-                    
+
+
                     {
                         dailyTasks.map((data, index) => (
                             <div className='taskcard' key={index}>

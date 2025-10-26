@@ -13,7 +13,7 @@ import GoogleFitConnect from './GoogleFitConnect.jsx'
 import OverallLeaderboard from './OverallLeaderboard.jsx'
 
 const Dashboard = () => {
-    const API=import.meta.env.API
+    const API = import.meta.env.VITE_API
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
     const [active, setActive] = useState('dashboard');
@@ -104,11 +104,11 @@ const Dashboard = () => {
                     >
                         <option value="" disabled>Leaderboard</option>
                         <option value="leaderboard"
-                            style={{ color: active === 'leaderboard' ? '#37db5e' : '' ,cursor:'pointer'}}>
+                            style={{ color: active === 'leaderboard' ? '#37db5e' : '', cursor: 'pointer' }}>
                             Department LeaderBoard
                         </option>
                         <option value="overallleaderboard"
-                            style={{ color: active === 'overallleaderboard' ? '#37db5e' : '',cursor:'pointer' }}>
+                            style={{ color: active === 'overallleaderboard' ? '#37db5e' : '', cursor: 'pointer' }}>
                             Overall LeaderBoard
                         </option>
                     </select>
@@ -152,7 +152,7 @@ const Dashboard = () => {
                             </div>
                             <div className='dd2'>
                                 <div className='name'>
-                                    
+
                                 </div>
                                 <div className='fitpoints'>
                                     <h2>Pushups: {user.pushups}</h2>
@@ -161,7 +161,7 @@ const Dashboard = () => {
                             </div>
                             <div className='dd2'>
                                 <div className='name'>
-                                    
+
                                 </div>
                                 <div className='fitpoints'>
                                     <h2>Squats: {user.squats}</h2>

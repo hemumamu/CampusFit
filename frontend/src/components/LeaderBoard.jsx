@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 
 const LeaderBoard = ({ user, setUser }) => {
-    const API=import.meta.env.API
+    const API = import.meta.env.VITE_API
     const [leaderboardusers, setLeaderboardusers] = useState([])
     useEffect(() => {
         const fetchData = async () => {
@@ -18,31 +18,31 @@ const LeaderBoard = ({ user, setUser }) => {
 
     return (
 
-//         <div>
-//         <br /><br />
-//         <h1 style={{textAlign:'center'}}>{user.department} Department LeaderBoard</h1>
-//         <br /><br />
-//         {
-//             leaderboardusers.map((data,index)=>(
-//                 <div className='main' key={index}>
-//                     <h2>{index+1}</h2>
-//                     <div className='leaderboardCard'>
-//                         <div style={{fontSize:'25px',color:'white'}}>{data.name}</div>
-//                         <div>FitPoints : {data.fitPoints}</div>
-//                         <h5 style={{color:'white'}}>Streaks : {data.streak} </h5>
-//                         <h5 style={{color:'white'}}>Steps : {data.steps} </h5>
-//                     </div>
+        //         <div>
+        //         <br /><br />
+        //         <h1 style={{textAlign:'center'}}>{user.department} Department LeaderBoard</h1>
+        //         <br /><br />
+        //         {
+        //             leaderboardusers.map((data,index)=>(
+        //                 <div className='main' key={index}>
+        //                     <h2>{index+1}</h2>
+        //                     <div className='leaderboardCard'>
+        //                         <div style={{fontSize:'25px',color:'white'}}>{data.name}</div>
+        //                         <div>FitPoints : {data.fitPoints}</div>
+        //                         <h5 style={{color:'white'}}>Streaks : {data.streak} </h5>
+        //                         <h5 style={{color:'white'}}>Steps : {data.steps} </h5>
+        //                     </div>
 
 
-//                   
-//                 </div>
+        //                   
+        //                 </div>
 
 
-//             ))
-//         }
-//         
-//       
-//     </div>
+        //             ))
+        //         }
+        //         
+        //       
+        //     </div>
         <div className="leaderboard-flex-container">
             <div className="leaderboard-title">{user.department} Department LeaderBoard</div>
             <div className="leaderboard-rows">

@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 const MyRewards = ({ user, setUser }) => {
-    const API=import.meta.env.API
+    const API = import.meta.env.VITE_API
     const [myRewards, setMyRewards] = useState([])
     const token = localStorage.getItem('token')
     useEffect(() => {
@@ -35,11 +35,11 @@ const MyRewards = ({ user, setUser }) => {
 
     return (
         <div>
-                <div className='myRewards'>
-                    <h1 style={{ textAlign: 'center' }}>Your Rewards</h1>
-                </div>
+            <div className='myRewards'>
+                <h1 style={{ textAlign: 'center' }}>Your Rewards</h1>
+            </div>
             <div>
-                
+
 
                 {
                     (myRewards.length === 0) ?
@@ -68,7 +68,7 @@ const MyRewards = ({ user, setUser }) => {
                 }
 
                 <div className='myReward'>
-                    <h4 style={{ textAlign: 'center',color:'#37db5e' }}>Note : If you claim the coupon it will expires within one day...</h4>
+                    <h4 style={{ textAlign: 'center', color: '#37db5e' }}>Note : If you claim the coupon it will expires within one day...</h4>
                 </div>
 
             </div>

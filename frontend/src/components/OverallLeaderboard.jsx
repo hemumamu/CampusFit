@@ -4,7 +4,7 @@ import axios from 'axios';
 import './OverallLeaderboard.css'
 
 const OverallLeaderboard = ({ user }) => {
-  const API = import.meta.env.API
+  const API = import.meta.env.VITE_API
   const [overallUsers, setOverallUsers] = useState([]);
   useEffect(() => {
     const fetchData = async () => {

@@ -8,7 +8,7 @@ const BUFFER_SIZE = 5;
 const REQUIRED_COUNT = 3;
 
 const PushUpCounter = () => {
-    const API=import.meta.env.API
+    const API = import.meta.env.VITE_API
     const navigate = useNavigate()
     const videoRef = useRef(null);
     const canvasRef = useRef(null);
@@ -259,7 +259,7 @@ const PushUpCounter = () => {
                     <li>Full body must be visible, especially knees and ankles.</li>
                     <li>Do plank push-ups with legs straight for reps to count.</li>
                     <li>It wont accept fast reps. it counts rep by rep ..Be patient while counting</li>
-                   
+
                 </ul>
             </div>
         </div>

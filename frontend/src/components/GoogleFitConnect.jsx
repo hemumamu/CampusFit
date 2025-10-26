@@ -15,7 +15,7 @@ const CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 const SCOPES = "https://www.googleapis.com/auth/fitness.activity.read";
 
 const GoogleFitConnect = ({ onStepsUpdate }) => {
-  const API=import.meta.env.API
+  const API = import.meta.env.VITE_API
   const [accessToken, setAccessToken] = useState(null);
   const [expiry, setExpiry] = useState(0);
   const [steps, setSteps] = useState(0);
@@ -113,8 +113,8 @@ const GoogleFitConnect = ({ onStepsUpdate }) => {
       console.error("Error fetching steps:", err);
     }
   };
- 
-  
+
+
 
   // On mount, load token from localStorage or request permission
   useEffect(() => {
