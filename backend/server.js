@@ -11,6 +11,8 @@ import tranporter from './mailer.js'
 const app = express()
 app.use(express.json())
 app.use(cors())
+// console.log(process.env.MONGO_URL)
+// const   PORT=process.env.PORT || 3000
 
 const conn =await mongoose.connect(process.env.MONGO_URL)
     .then(() => {
@@ -28,6 +30,6 @@ app.get('/', (req, res) => {
 
 startCronJobs()
 
-app.listen(3000, () => {
+app.listen(4000, () => {
     console.log('server is running')
 })

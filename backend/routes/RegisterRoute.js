@@ -89,7 +89,6 @@ router.get('/dashboard', async (req, res) => {
         const userDate = new Date(user.lastUpdated).toDateString()
         if (toadyDate !== userDate) {
             user.completedTasks = []
-
             user.lastUpdated = new Date()
             await user.save()
         }
