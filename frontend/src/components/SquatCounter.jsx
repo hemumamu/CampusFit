@@ -13,6 +13,7 @@ const REQUIRED_COUNT = 3;
 const HIP_ABOVE_ANKLE_MIN_DIFF = 90; // Adjust as needed for your scene/camera
 
 const SquatCounter = () => {
+    const API=import.meta.env.API
     const navigate=useNavigate()
     const videoRef = useRef(null);
     const canvasRef = useRef(null);
@@ -191,7 +192,7 @@ const SquatCounter = () => {
     const handleStop = async () => {
         try {
             const token = localStorage.getItem('token')
-            const res = await axios.put('http://localhost:3000/student/updatesquats', { count }, { headers: { Authorization: ` bearer ${token}` } })
+            const res = await axios.put(`${API}/student/updatesquats`, { count }, { headers: { Authorization: ` bearer ${token}` } })
             alert(res.data.message)
             console.log('squats updated')
             navigate('/dashboard')

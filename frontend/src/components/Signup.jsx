@@ -12,7 +12,7 @@ function Signup() {
     }
     const handleSubmit = async (e) => {
         e.preventDefault()
-        await axios.post('http://localhost:3000/student/register', form)
+        await axios.post(`${API}/student/register`, form)
             .then((res) => {
                 alert(res.data.message)
                 setForm({name:"",email:"",password:"",department:"",year:""})

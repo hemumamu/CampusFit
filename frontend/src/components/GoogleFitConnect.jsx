@@ -15,6 +15,7 @@ const CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 const SCOPES = "https://www.googleapis.com/auth/fitness.activity.read";
 
 const GoogleFitConnect = ({ onStepsUpdate }) => {
+  const API=import.meta.env.API
   const [accessToken, setAccessToken] = useState(null);
   const [expiry, setExpiry] = useState(0);
   const [steps, setSteps] = useState(0);
@@ -95,7 +96,7 @@ const GoogleFitConnect = ({ onStepsUpdate }) => {
       if (!onStepsUpdate) {
         const userToken = localStorage.getItem("token");
         if (userToken) {
-          await fetch("http://localhost:3000/student/updateActivity", {
+          await fetch(`${API}/student/updateActivity`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

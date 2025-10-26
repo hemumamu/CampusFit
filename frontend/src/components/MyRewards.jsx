@@ -4,11 +4,12 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 const MyRewards = ({ user, setUser }) => {
+    const API=import.meta.env.API
     const [myRewards, setMyRewards] = useState([])
     const token = localStorage.getItem('token')
     useEffect(() => {
         const dataFetch = async () => {
-            const res = await axios.get('http://localhost:3000/student/myRewards',
+            const res = await axios.get(`${API}/student/myRewards`,
                 { headers: { Authorization: `Bearer ${token}` } })
             // console.log(res.data.message);
             // console.log(res.data.fitRewards)
@@ -20,7 +21,7 @@ const MyRewards = ({ user, setUser }) => {
     }, [])
     const handleReward = async (index) => {
         try {
-            const res = await axios.put('http://localhost:3000/student/updatemyRewards', { index }, { headers: { Authorization: `Bearer ${token}` } })
+            const res = await axios.put(`${API}/student/updatemyRewards`, { index }, { headers: { Authorization: `Bearer ${token}` } })
             const updatedrewards = [...myRewards]
             updatedrewards[index] = res.data.reward
             setMyRewards(updatedrewards)

@@ -8,6 +8,7 @@ const BUFFER_SIZE = 5;
 const REQUIRED_COUNT = 3;
 
 const PushUpCounter = () => {
+    const API=import.meta.env.API
     const navigate = useNavigate()
     const videoRef = useRef(null);
     const canvasRef = useRef(null);
@@ -214,7 +215,7 @@ const PushUpCounter = () => {
     const handleStop = async () => {
         try {
             const token = localStorage.getItem('token')
-            const res = await axios.put('http://localhost:3000/student/updatePushups',
+            const res = await axios.put(`${API}/student/updatePushups`,
                 { count },
                 { headers: { Authorization: `Bearer ${token}` } })
             console.log('pushups updated')

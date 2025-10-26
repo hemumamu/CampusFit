@@ -31,6 +31,7 @@ import './SignIn.css'
 
 
 const SignIn = () => {
+    const API=import.meta.env.API
     const navigate = useNavigate()
 
     const [form, setForm] = useState({ email: "", password: "" })
@@ -47,7 +48,7 @@ const SignIn = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const res = await axios.post('http://localhost:3000/student/login', form)
+            const res = await axios.post(`${API}/student/login`, form)
 
             alert(res.data.message)
             localStorage.setItem('token', res.data.token)

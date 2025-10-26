@@ -13,6 +13,7 @@ import GoogleFitConnect from './GoogleFitConnect.jsx'
 import OverallLeaderboard from './OverallLeaderboard.jsx'
 
 const Dashboard = () => {
+    const API=import.meta.env.API
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
     const [active, setActive] = useState('dashboard');
@@ -26,7 +27,7 @@ const Dashboard = () => {
                     return;
                 }
 
-                const res = await axios.get('http://localhost:3000/student/dashboard',
+                const res = await axios.get(`${API}/student/dashboard`,
                     { headers: { Authorization: `Bearer ${token}` } })
                 console.log(res.data.message)
                 setUser(res.data.user)

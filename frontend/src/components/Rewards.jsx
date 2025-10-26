@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 const Rewards = ({ user, setUser }) => {
+    const API=import.meta.env.API
 
     const [activeReward, setActiveReward] = useState("fitpointsReward")
     const [claimedStreakRewards, setClaimedStreakRewards] = useState([])
@@ -17,7 +18,7 @@ const Rewards = ({ user, setUser }) => {
     const handleClick = async (item) => {
         if (item.fitPointsRequired <= user.fitPoints) {
             const token = localStorage.getItem('token')
-            const res = await axios.put('http://localhost:3000/student/updaterewards',
+            const res = await axios.put(`${API}/student/updaterewards`,
                 item,
                 { headers: { Authorization: `Bearer ${token}` } }
             )
@@ -35,7 +36,7 @@ const Rewards = ({ user, setUser }) => {
     const handleClick2 = async (item, index) => {
         if (item.streakDays <= user.streak) {
             const token = localStorage.getItem('token')
-            const res = await axios.put('http://localhost:3000/student/updatestreakrewards',
+            const res = await axios.put(`${API}/student/updatestreakrewards`,
                 { item, index },
                 { headers: { Authorization: `Bearer ${token}` } }
             )

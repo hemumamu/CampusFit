@@ -4,11 +4,12 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 
 const LeaderBoard = ({ user, setUser }) => {
+    const API=import.meta.env.API
     const [leaderboardusers, setLeaderboardusers] = useState([])
     useEffect(() => {
         const fetchData = async () => {
             const token = localStorage.getItem('token')
-            const res = await axios.get('http://localhost:3000/student/leaderboard', { headers: { Authorization: `Bearer ${token}` } })
+            const res = await axios.get(`${API}/student/leaderboard`, { headers: { Authorization: `Bearer ${token}` } })
             setLeaderboardusers(res.data.users)
         }
         fetchData()

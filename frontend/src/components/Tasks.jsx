@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import SquatCounter from './SquatCounter.jsx'
 
 const Tasks = ({ user, setUser }) => {
+    const API=import.meta.env.API
     const navigate = useNavigate()
     const [completedTasks, setCompletedTasks] = useState([]);
     useEffect(() => {
@@ -19,7 +20,7 @@ const Tasks = ({ user, setUser }) => {
         try {
             const token = localStorage.getItem('token')
 
-            const res1 = await axios.get('http://localhost:3000/student/getData',
+            const res1 = await axios.get(`${API}/student/getData`,
                 { headers: { Authorization: `Bearer ${token}` } }
 
             )
@@ -30,7 +31,7 @@ const Tasks = ({ user, setUser }) => {
             console.log(steps);
 
             if ((dailyTasks[index].type === 'walking' && steps >= dailyTasks[index].target) || (dailyTasks[index].type == 'pushups' && pushups >= dailyTasks[index].target) || (dailyTasks[index].type == 'squats' && squats >= dailyTasks[index].target)) {
-                const res = await axios.put('http://localhost:3000/student/updatepoints',
+                const res = await axios.put(`${API}/student/updatepoints`,
                     { points, taskIndex: index, dailyTasks }, { headers: { Authorization: `Bearer ${token}` } }
 
                 )
