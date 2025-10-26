@@ -1,0 +1,87 @@
+/* SquatCounter.css */
+body {
+  background: #232323;
+}
+
+.heading2 {
+  color: #37db5e;
+  font-size: 2rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 0.5em;
+}
+
+.heading3 {
+  color: #eee;
+  font-weight: 500;
+  margin: 0.15em 0;
+}
+
+.heading4 {
+  color: #ccc;
+  font-size: 1.09rem;
+  margin-bottom: 8px;
+}
+
+.squatdiv {
+  display: flex;
+  gap: 1.2em;
+  justify-content: center;
+  margin-top: 15px;
+  margin-bottom: 22px;
+}
+
+.squatdiv button {
+  padding: 10px 32px;
+  background: #444;
+  color: #eee;
+  border: none;
+  border-radius: 7px;
+  font-size: 1.05em;
+  font-weight: 600;
+  box-shadow: 0 2px 13px #000a;
+  cursor: pointer;
+  transition: background 0.17s, color 0.17s;
+}
+
+.squatdiv button:hover {
+  background: #37db5e;
+  color: #232323;
+}
+
+canvas {
+  background: #151515;
+  border: 2px solid #3c3c3c;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px #0006;
+  margin-bottom: 12px;
+  max-width: 100%;
+}
+
+.instructions {
+  background: #151515;
+  color: #eee;
+  padding: 15px 18px;
+  border-radius: 11px;
+  box-shadow: 0px 3px 13px 2px #0008;
+  border: 1.6px solid #3c3c3c;
+  font-size: 1em;
+  margin-top: 21px;
+}
+
+.instructions ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+@media (max-width: 600px) {
+  .squatdiv {
+    flex-direction: column;
+    gap: 0.95em;
+  }
+  canvas {
+    width: 95vw !important;
+    height: auto !important;
+  }
+}

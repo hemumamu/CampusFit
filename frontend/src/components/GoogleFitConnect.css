@@ -1,0 +1,15 @@
+.refreshBut{
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px;
+    /* box-shadow: 0px 4px 10px  black; */
+    background-color: rgb(86, 87, 87);
+    color: white;
+    
+}
+.refreshBut:hover{
+    padding: 7px;
+    background-color:#4CAF50;
+    color: black;
+}

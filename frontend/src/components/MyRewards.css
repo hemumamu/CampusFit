@@ -1,0 +1,99 @@
+body, #root, .App {
+  background: #151515 !important;
+  min-height: 100vh;
+}
+
+.yourReward {
+  width: 100vw;
+  min-height: 75vh;
+  background: #151515;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 38px 18px 38px 18px;
+}
+
+.reward {
+  background: #232323;
+  border-radius: 16px;
+  box-shadow: 0 5px 14px rgba(56,203,97,0.12), 0 1px 18px #0005;
+  border: 2.5px solid #37db5e;
+  padding: 22px 12px;
+  text-align: center;
+  width: 235px;
+  color: #eee;
+  margin-bottom: 10px;
+  transition: transform 0.18s, box-shadow 0.12s;
+  position: relative;
+}
+
+.reward:hover {
+  transform: translateY(-7px) scale(1.025);
+  box-shadow: 0 10px 22px #37db5e22;
+}
+
+.reward h3 {
+  font-size: 1.09rem;
+  color: #37db5e;
+  margin-bottom: 8px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.reward h5 {
+  font-size: 0.96rem;
+  color: #bbb;
+  margin-bottom: 9px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+/* No Rewards Message */
+.yourReward + p, .yourReward p {
+  text-align: center;
+  color: #ccc;
+  margin-top: 40px;
+  font-size: 1.1em;
+  letter-spacing: 1px;
+}
+
+h1 {
+  text-align: center;
+  color: #37db5e;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 2em;
+  letter-spacing: 1px;
+}
+.myRewards
+{
+  margin-top: 50px;
+
+}
+
+/* Responsive Styles */
+@media (max-width: 640px) {
+  .yourReward {
+    gap: 18px;
+    padding: 13px 2vw 26px 2vw;
+    min-height: 65vh;
+  }
+  .reward {
+    width: 97vw;
+    max-width: 340px;
+    margin: 0 auto 12px auto;
+    padding: 12px 5px;
+  }
+  h1 {
+    font-size: 1.33em;
+  }
+}
+
+/* Universal no margin/padding leak */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

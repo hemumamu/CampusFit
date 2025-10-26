@@ -1,0 +1,183 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.dashNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0% 3%;
+  width: 100%;
+  height: 60px;
+  background-color: rgb(86, 87, 87);
+  color: black;
+
+}
+
+.nav1 {
+  width: 100px;
+  height: 50px;
+  /* background-color: blue; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+}
+
+.nav2 {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 60%;
+  height: 50px;
+  /* background-color: brown; */
+}
+
+.nav2 button {
+  width: 80px;
+  height: 30px;
+  color: rgb(242, 245, 245);
+  background-color: rgb(247, 5, 5);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.detailsDiv {
+  width: 100%;
+  height: 100vh;
+  background-color: aliceblue;
+  color: white;
+  padding: 30px;
+  background-image: url('../assets/images/fitImage2.jpg');
+  background-repeat: no-repeat;
+
+  background-size: cover;
+  background-position: center;
+}
+
+.dd1 {
+  width: 100%;
+  height: 100px;
+  /* background-color: rgb(12, 12, 122); */
+  display: flex;
+  padding: 0% 5%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.name {
+  width: 30%;
+  height: 60px;
+  /* background-color: brown; */
+}
+
+.fitpoints {
+  width: 16%;
+  height: 60px;
+  background-color: rgb(86, 87, 87);
+  border: 2px solid rgb(3, 3, 3);
+  color: black;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.fitpoints h2 {
+  color: white
+}
+
+.dd2 {
+  margin-top: 10px;
+  width: 100%;
+  height: 100px;
+  /* background-color: rgb(12, 12, 122); */
+  display: flex;
+  padding: 0% 5%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.taskbut {
+  width: 80px;
+  height: 30px;
+  color: rgb(242, 245, 245);
+
+  background-color: rgb(247, 5, 5);
+  border-radius: 5px;
+}
+
+.tasks {
+  width: 500px;
+  height: 300px;
+  /* background-color: blue; */
+}
+
+.task {
+  margin: 5% 0;
+  width: 100%;
+  height: 100px;
+  /* background-color: aquamarine; */
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+@media (max-width: 700px) {
+  .dashNav {
+    flex-direction: column;
+    height: auto;
+    padding: 10px 3vw;
+  }
+
+  .nav1,
+  .nav2 {
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  .nav2 {
+    flex-wrap: wrap;
+  }
+
+  .nav2>div,
+  .nav2 button {
+    margin: 3px 4px;
+  }
+
+  .detailsDiv,
+  .tasks,
+  .task {
+    padding: 12px 2vw;
+    width: 98vw;
+  }
+
+  .dd1,
+  .dd2 {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding: 7px 0;
+    gap: 8px;
+  }
+
+  .name,
+  .fitpoints {
+    width: 99%;
+    min-width: 0;
+    margin-bottom: 10px;
+  }
+
+  .fitpoints {
+    font-size: 1.1em;
+    justify-content: flex-start;
+  }
+}

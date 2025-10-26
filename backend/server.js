@@ -1,0 +1,33 @@
+import dotenv from 'dotenv'
+dotenv.config()
+import express from 'express'
+import mongoose from 'mongoose'
+import RegisterRoute from './routes/RegisterRoute.js'
+import cors from 'cors'
+import startCronJobs from './Scheduling.js'
+import tranporter from './mailer.js'
+
+
+const app = express()
+app.use(express.json())
+app.use(cors())
+
+const conn =await mongoose.connect(process.env.MONGO_URL)
+    .then(() => {
+        console.log('database connected successfully')
+    }).catch((err) => {
+        console.log(err)
+    })
+
+app.use('/student',RegisterRoute)
+
+
+app.get('/', (req, res) => {
+    res.send('this is get request')
+})
+
+startCronJobs()
+
+app.listen(3000, () => {
+    console.log('server is running')
+})

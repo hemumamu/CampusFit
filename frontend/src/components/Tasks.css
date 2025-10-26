@@ -1,0 +1,105 @@
+body, #root, .App {
+  background: #151515 !important;
+  min-height: 100vh;
+}
+
+.main {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: #151515;
+  /* background-color: aqua; */
+  /* padding-top: 40px; */
+}
+
+.taskssection {
+  width: 510px;
+  max-width: 98vw;
+  min-height: 60vh;
+  background: transparent;
+}
+
+.taskssection h1 {
+  text-align: center;
+  margin-bottom: 21px;
+  color: #37db5e;
+  font-size: 2em;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.taskcard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5% 0;
+  width: 100%;
+  min-height: 98px;
+  background: #222;
+  padding: 20px 18px;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  transition: transform 0.15s, box-shadow 0.13s;
+}
+
+.taskcard:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 9px 40px #37db5e18;
+}
+
+.taskcard h4 {
+  color: #eee;
+  margin-bottom: 4px;
+  font-size: 1em;
+  font-weight: 600;
+}
+.tasksDiv {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+}
+.tasksDiv button {
+  background-color: rgb(86, 87, 87);
+  cursor: pointer;
+  color: white;
+  outline: none;
+  width: 92px;
+  height: 32px;
+  border-radius: 9px;
+  font-weight: 600;
+  border: none;
+  margin-right: 10px;
+  margin-top: 5px;
+  box-shadow: 0px 2px 7px #0007;
+  transition: background 0.13s, color 0.12s;
+}
+
+.tasksDiv button:hover {
+  background-color: #37db5e;
+  color: #212;
+}
+
+.tasksDiv button:disabled {
+  background-color: #37db5e;
+  color: #212;
+  font-weight: bold;
+  border: none;
+  cursor: not-allowed;
+  opacity: 0.95;
+}
+
+@media (max-width: 650px) {
+  .taskssection, .taskcard {
+    width: 98vw;
+    max-width: 98vw;
+    padding: 9px 2vw;
+  }
+  .taskssection h1 {
+    font-size: 1.3em;
+  }
+  .main {
+    padding-top: 19px;
+  }
+}

@@ -1,0 +1,106 @@
+.main-Div {
+  width: 100vw;
+  height: 100vh;
+  background: #232323;       /* Same as dashboard bar */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  width: 370px;
+  padding: 34px 28px 32px 28px;
+  background: #151515;        /* Deep dashboard black */
+  box-shadow: 0px 4px 18px 2px #000a;
+  border-radius: 12px;
+  color: #eee;
+  border: 2.4px solid #3c3c3c;  /* subtle outline for clarity */
+}
+
+.form h1 {
+  text-align: center;
+  margin-bottom: 5px;
+  color: #37db5e;           /* Green accent (dashboard active tab) */
+  letter-spacing: 1px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.form label {
+  display: block;
+  width: 100%;
+  text-align: left;
+  /* margin-bottom: 4px; */
+  color: #eee;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.form input,
+.form select {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 15px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background: #232323;
+  color: #fff;
+  /* margin-bottom: 12px; */
+  box-shadow: 0px 1px 2px #0008;
+  transition: border 0.18s;
+}
+
+.form input:focus,
+.form select:focus {
+  border: 1.7px solid #37db5e;  /* Green focus border */
+}
+
+.form button {
+  background: #444;             /* Gray button like dashboard cards */
+  color: #eee;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  border-radius: 7px;
+  padding: 9px 0;
+  margin-top: 8px;
+  cursor: pointer;
+  transition: background-color 0.16s, color 0.16s;
+}
+
+.form button:hover {
+  background: #37db5e;  /* Green accent on hover */
+  color: #232323;
+}
+
+.form h4 {
+  /* margin-top: 12px; */
+  text-align: center;
+  color: #ccc;
+}
+
+.form a {
+  color: #37db5e;
+  text-decoration: underline;
+}
+
+
+
+@media (max-width: 600px) {
+  .main-Div {
+    padding: 0;
+  }
+  .form {
+    width: 95vw;
+    min-width: 0;
+    padding: 20px 6px 18px 6px;
+    box-shadow: 0px 2px 10px 2px #0007;
+  }
+  .form h1 {
+    font-size: 20px;
+  }
+}
