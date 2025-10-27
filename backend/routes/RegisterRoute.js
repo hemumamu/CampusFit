@@ -30,17 +30,17 @@ router.post('/register', async (req, res) => {
 
         })
         res.status(200).json({ message: "Registration Successfull" })
-        await tranporter.sendMail({
-            from: process.env.EMAIL,
-            to: email,
-            subject: 'CampusFit',
-            text: `Thanks for the registration Mr / Ms  ${name} ...
-                This is the first step to start your fitness journey in a gamified way 
-                you can win exciting Rewards by redeeming your FitPoints..    
+        // await tranporter.sendMail({
+        //     from: process.env.EMAIL,
+        //     to: email,
+        //     subject: 'CampusFit',
+        //     text: `Thanks for the registration Mr / Ms  ${name} ...
+        //         This is the first step to start your fitness journey in a gamified way 
+        //         you can win exciting Rewards by redeeming your FitPoints..    
 
-            `
+        //     `
 
-        })
+        // })
 
         await details.save()
         console.log('data stored')
