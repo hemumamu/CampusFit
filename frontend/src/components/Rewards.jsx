@@ -50,9 +50,6 @@ const Rewards = ({ user, setUser }) => {
     return (
         <>
             <div className='rewardsInfo'>
-                <div className='rewardsInfoLeft'>
-                    <h2>Reward Section</h2>
-                </div>
                 <div className='rewardsInfoRight'>
                     <div className='rewardStatBox'>
                         <h3>FitPoints : {user?.fitPoints || 0}</h3>
@@ -62,6 +59,9 @@ const Rewards = ({ user, setUser }) => {
                     </div>
                 </div>
             </div>
+                <div className='rewardsInfoLeft' style={{textAlign:'center'}}>
+                    <h2>Reward Section</h2>
+                </div>
 
             <div className="rewardToggleContainer">
                 <button

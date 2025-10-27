@@ -14,9 +14,11 @@ const RegisterSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    year:{
-        type:Number,
-        
+    year: {
+
+        type: Number,
+        required:true
+
 
     },
     fitPoints: {
@@ -31,9 +33,9 @@ const RegisterSchema = mongoose.Schema({
         type: [Number],
         default: []
     },
-    lastCompleted:{
-        type:String,
-        default:null
+    lastCompleted: {
+        type: String,
+        default: null
     }
     ,
     lastUpdated: {
@@ -45,21 +47,23 @@ const RegisterSchema = mongoose.Schema({
             name: String,
             description: String,
             fitPointsRequired: Number,
-            type:{
-                type:String
+            type: {
+                type: String
             },
-            coupon:{
-                type:String,
-                default:""
+            coupon: {
+                type: String,
+                default: ""
             },
-            isclaimed:{
-                type:Boolean,
-                default:false
-            },expiresAt:{
-                type:Date,
-                default:new Date()
-                
-                
+            isclaimed: {
+                type: Boolean,
+                default: false
+            }, expiresAt: {
+                type: Date,
+                default: function () {
+                    return new Date(Date.now() + 10 * 24 * 60 * 60 * 1000)
+                }
+
+
             }
         }
     ],
@@ -68,38 +72,38 @@ const RegisterSchema = mongoose.Schema({
             rewardName: String,
             description: String,
             streakDays: Number,
-            type:{
-                type:String
+            type: {
+                type: String
             },
-            isclaimed:{
-                type:Boolean,
-                default:false
+            isclaimed: {
+                type: Boolean,
+                default: false
             }
         }
     ],
-    claimedStreakRewards:{
-        type:[Number],
-        default:[]
+    claimedStreakRewards: {
+        type: [Number],
+        default: []
     },
     department: {
         type: String,
         required: true
     },
-    pushups:{
-        type:Number,
-        default:0
+    pushups: {
+        type: Number,
+        default: 0
 
     },
-    squats:{
-        type:Number,
-        default:0
+    squats: {
+        type: Number,
+        default: 0
 
     },
     steps: {
         type: Number,
         default: 0
     },
-    
+
 
 
 
