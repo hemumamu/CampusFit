@@ -27,7 +27,7 @@ const Rewards = ({ user, setUser }) => {
             setUser({ ...user, fitPoints: res.data.fitPoints })
 
 
-            alert('you claimed a reward')
+            alert(res.data.message)
         }
         else {
             alert('you have insufficient fitPoints')
