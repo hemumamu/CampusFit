@@ -1,7 +1,7 @@
 .main-Div {
   width: 100vw;
   height: 100vh;
-  background: #232323;       /* Same as dashboard bar */
+  background: #232323;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,17 +13,17 @@
   gap: 11px;
   width: 370px;
   padding: 34px 28px 32px 28px;
-  background: #151515;        /* Deep dashboard black */
+  background: #151515;
   box-shadow: 0px 4px 18px 2px #000a;
   border-radius: 12px;
   color: #eee;
-  border: 2.4px solid #3c3c3c;  /* subtle outline for clarity */
+  border: 2.4px solid #3c3c3c;
 }
 
 .form h1 {
   text-align: center;
   margin-bottom: 5px;
-  color: #37db5e;           /* Green accent (dashboard active tab) */
+  color: #37db5e;
   letter-spacing: 1px;
   font-size: 24px;
   font-weight: bold;
@@ -33,7 +33,6 @@
   display: block;
   width: 100%;
   text-align: left;
-  /* margin-bottom: 4px; */
   color: #eee;
   font-size: 15px;
   font-weight: 500;
@@ -49,18 +48,17 @@
   outline: none;
   background: #232323;
   color: #fff;
-  /* margin-bottom: 12px; */
   box-shadow: 0px 1px 2px #0008;
   transition: border 0.18s;
 }
 
 .form input:focus,
 .form select:focus {
-  border: 1.7px solid #37db5e;  /* Green focus border */
+  border: 1.7px solid #37db5e;
 }
 
 .form button {
-  background: #444;             /* Gray button like dashboard cards */
+  background: #444;
   color: #eee;
   font-weight: bold;
   font-size: 16px;
@@ -73,14 +71,14 @@
 }
 
 .form button:hover {
-  background: #37db5e;  /* Green accent on hover */
+  background: #37db5e;
   color: #232323;
 }
 
 .form h4 {
-  /* margin-top: 12px; */
   text-align: center;
   color: #ccc;
+  font-size: 14px;
 }
 
 .form a {
@@ -88,19 +86,100 @@
   text-decoration: underline;
 }
 
+/* Tablet Responsive */
+@media (max-width: 768px) {
+  .form {
+    width: 90vw;
+    max-width: 500px;
+    padding: 28px 20px;
+  }
+  
+  .form h1 {
+    font-size: 22px;
+  }
+  
+  .form label {
+    font-size: 14px;
+  }
+  
+  .form input,
+  .form select {
+    font-size: 14px;
+    padding: 7px 10px;
+  }
+  
+  .form button {
+    font-size: 15px;
+    padding: 8px 0;
+  }
+}
 
-
+/* Mobile Responsive */
 @media (max-width: 600px) {
   .main-Div {
-    padding: 0;
+    padding: 10px;
+    height: auto;
+    min-height: 100vh;
   }
+  
   .form {
     width: 95vw;
+    max-width: 100%;
     min-width: 0;
-    padding: 20px 6px 18px 6px;
+    padding: 20px 16px;
     box-shadow: 0px 2px 10px 2px #0007;
   }
+  
   .form h1 {
-    font-size: 20px;
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  
+  .form label {
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+  
+  .form input,
+  .form select {
+    font-size: 13px;
+    padding: 6px 10px;
+    margin-bottom: 8px;
+  }
+  
+  .form button {
+    font-size: 14px;
+    padding: 7px 0;
+    margin-top: 6px;
+  }
+  
+  .form h4 {
+    font-size: 12px;
+    margin-top: 8px;
+  }
+}
+
+/* Small Mobile (Under 400px) */
+@media (max-width: 400px) {
+  .form {
+    padding: 16px 12px;
+  }
+  
+  .form h1 {
+    font-size: 16px;
+  }
+  
+  .form label {
+    font-size: 12px;
+  }
+  
+  .form input,
+  .form select {
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+  
+  .form button {
+    font-size: 13px;
   }
 }

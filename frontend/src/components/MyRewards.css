@@ -1,99 +1,356 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body, #root, .App {
   background: #151515 !important;
   min-height: 100vh;
 }
 
+.myRewardsContainer {
+  width: 100%;
+  min-height: 100vh;
+  background: #151515;
+}
+
+.myRewardsHeader {
+
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.myRewardsHeader h1 {
+  color: #37db5e;
+  font-size: 2em;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
 .yourReward {
-  width: 100vw;
-  min-height: 75vh;
+  width: 100%;
+  min-height: 60vh;
   background: #151515;
   display: flex;
   flex-wrap: wrap;
-  gap: 32px;
+  gap: 28px;
   justify-content: center;
   align-items: flex-start;
-  padding: 38px 18px 38px 18px;
+  padding: 35px 20px;
 }
 
 .reward {
-  background: #232323;
-  border-radius: 16px;
-  box-shadow: 0 5px 14px rgba(56,203,97,0.12), 0 1px 18px #0005;
-  border: 2.5px solid #37db5e;
-  padding: 22px 12px;
+  background: #222;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  border: 1.5px solid #37db5e;
+  padding: 20px 16px;
   text-align: center;
-  width: 235px;
+  width: 240px;
   color: #eee;
-  margin-bottom: 10px;
-  transition: transform 0.18s, box-shadow 0.12s;
-  position: relative;
+  transition: all 0.2s ease;
 }
 
 .reward:hover {
-  transform: translateY(-7px) scale(1.025);
-  box-shadow: 0 10px 22px #37db5e22;
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(55, 219, 94, 0.2);
 }
 
 .reward h3 {
-  font-size: 1.09rem;
+  font-size: 1.15em;
   color: #37db5e;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   font-weight: 700;
+}
+
+.description {
+  font-size: 0.95em;
+  color: #ccc;
+  margin-bottom: 14px;
+  line-height: 1.4;
+}
+
+.couponBox {
+  /* background: #1a1a1a; */
+  /* border: 1px solid #37db5e; */
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin: 12px 0;
+}
+
+.couponText {
+  color: #37db5e;
+  font-weight: 700;
+  font-size: 1em;
+  font-family: monospace;
+  word-break: break-all;
+  letter-spacing: 1px;
+}
+
+.rewardBut {
+  background: #444;
+  color: #eee;
+  border: 1px solid #3c3c3c;
+  padding: 8px 20px;
+  border-radius: 7px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 13px;
+  margin-top: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  transition: all 0.2s ease;
+}
+
+.rewardBut:hover {
+  background: #37db5e;
+  color: #232323;
+  border-color: #37db5e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(55, 219, 94, 0.3);
+}
+
+.noRewards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.noRewards p {
+  color: #ccc;
+  font-size: 1.1em;
+  margin: 10px 0;
+}
+
+.noRewards .subtext {
+  color: #999;
+  font-size: 0.95em;
+  margin-top: 15px;
+}
+
+.rewardNote {
+  
+  padding: 20px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.rewardNote h4 {
+  color: #37db5e;
+  font-size: 0.95em;
+  font-weight: 600;
+  margin: 0;
   letter-spacing: 0.5px;
 }
 
-.reward h5 {
-  font-size: 0.96rem;
-  color: #bbb;
-  margin-bottom: 9px;
-  font-weight: 500;
-  letter-spacing: 0.2px;
-}
+/* Tablet Responsive (768px) */
+@media (max-width: 768px) {
+  .myRewardsHeader {
+    padding: 20px 15px;
+  }
 
-/* No Rewards Message */
-.yourReward + p, .yourReward p {
-  text-align: center;
-  color: #ccc;
-  margin-top: 40px;
-  font-size: 1.1em;
-  letter-spacing: 1px;
-}
+  .myRewardsHeader h1 {
+    font-size: 1.6em;
+  }
 
-h1 {
-  text-align: center;
-  color: #37db5e;
-  margin-bottom: 10px;
-  font-weight: bold;
-  font-size: 2em;
-  letter-spacing: 1px;
-}
-.myRewards
-{
-  margin-top: 50px;
-
-}
-
-/* Responsive Styles */
-@media (max-width: 640px) {
   .yourReward {
     gap: 18px;
-    padding: 13px 2vw 26px 2vw;
-    min-height: 65vh;
+    padding: 25px 15px;
   }
+
   .reward {
-    width: 97vw;
-    max-width: 340px;
-    margin: 0 auto 12px auto;
-    padding: 12px 5px;
+    width: 220px;
+    padding: 16px 12px;
   }
-  h1 {
-    font-size: 1.33em;
+
+  .reward h3 {
+    font-size: 1.05em;
+  }
+
+  .description {
+    font-size: 0.9em;
+  }
+
+  .couponBox {
+    padding: 7px 9px;
+  }
+
+  .couponText {
+    font-size: 0.7em;
+  }
+
+  .rewardBut {
+    font-size: 12px;
+    padding: 7px 16px;
   }
 }
 
-/* Universal no margin/padding leak */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* Mobile Responsive (600px) */
+@media (max-width: 600px) {
+  .myRewardsHeader {
+    padding: 16px 12px;
+  }
+
+  .myRewardsHeader h1 {
+    font-size: 1.3em;
+  }
+
+  .yourReward {
+    gap: 14px;
+    padding: 18px 12px;
+    min-height: auto;
+  }
+
+  .reward {
+    width: 100%;
+    max-width: 320px;
+    padding: 14px 12px;
+  }
+
+  .reward h3 {
+    font-size: 1em;
+    margin-bottom: 8px;
+  }
+
+  .description {
+    font-size: 0.85em;
+    margin-bottom: 10px;
+  }
+
+  .couponBox {
+    padding: 6px 8px;
+    margin: 8px 0;
+  }
+
+  .couponText {
+    font-size: 0.65em;
+  }
+
+  .rewardBut {
+    font-size: 11px;
+    padding: 6px 14px;
+    margin-top: 8px;
+  }
+
+  .noRewards {
+    min-height: 50vh;
+  }
+
+  .noRewards p {
+    font-size: 1em;
+  }
+
+  .rewardNote {
+    padding: 15px 10px;
+  }
+
+  .rewardNote h4 {
+    font-size: 0.9em;
+  }
+}
+
+/* Small Mobile (430px - Redmi 12 Pro Plus) */
+@media (max-width: 430px) {
+  .myRewardsHeader {
+    padding: 12px 10px;
+  }
+
+  .myRewardsHeader h1 {
+    font-size: 1.1em;
+  }
+
+  .yourReward {
+    gap: 10px;
+    padding: 12px 8px;
+  }
+
+  .reward {
+    width: 95vw;
+    max-width: 100%;
+    padding: 12px 10px;
+  }
+
+  .reward h3 {
+    font-size: 0.95em;
+  }
+
+  .description {
+    font-size: 0.8em;
+  }
+
+  .couponBox {
+    padding: 5px 7px;
+  }
+
+  .couponText {
+    font-size: 0.6em;
+  }
+
+  .rewardBut {
+    font-size: 10px;
+    padding: 5px 12px;
+  }
+
+  .noRewards p {
+    font-size: 0.95em;
+  }
+
+  .rewardNote h4 {
+    font-size: 0.85em;
+  }
+}
+
+/* Extra Small Mobile (under 350px) */
+@media (max-width: 350px) {
+  .myRewardsHeader {
+    padding: 10px 8px;
+  }
+
+  .myRewardsHeader h1 {
+    font-size: 1em;
+  }
+
+  .yourReward {
+    gap: 8px;
+    padding: 10px 6px;
+  }
+
+  .reward {
+    width: 95vw;
+    padding: 10px 8px;
+  }
+
+  .reward h3 {
+    font-size: 0.9em;
+  }
+
+  .description {
+    font-size: 0.75em;
+  }
+
+  .couponBox {
+    padding: 4px 6px;
+  }
+
+  .couponText {
+    font-size: 0.55em;
+  }
+
+  .rewardBut {
+    font-size: 9px;
+    padding: 4px 10px;
+  }
+
+  .noRewards p {
+    font-size: 0.9em;
+  }
+
+  .rewardNote h4 {
+    font-size: 0.8em;
+  }
 }

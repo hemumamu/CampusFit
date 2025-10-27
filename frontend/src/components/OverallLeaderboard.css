@@ -81,3 +81,51 @@ body, #root, .App {
   padding: 0;
   box-sizing: border-box;
 }
+@media (max-width: 670px) {
+  .leaderboard-title {
+    font-size: 1.1em;
+    margin-bottom: 12px;
+  }
+  .leaderboard-rows {
+    max-width: 99vw;
+    width: 99vw;
+  }
+  .leaderboard-row, .leaderboard-row.header {
+    font-size: .92em;
+    height: 34px;
+    min-height: 28px;
+    padding: 0;
+  }
+  .rank-badge {
+    min-width: 28px;
+    max-width: 30px;
+    font-size: .9em;
+    padding: 0 3px;
+  }
+  .lb-name { flex: 1.2; min-width: 40px; padding-left: 5px;}
+  .lb-year, .lb-fitpoints, .lb-streak, .lb-steps, .lb-dept { flex: 0.7; min-width: 24px; padding: 0;}
+}
+@media (max-width: 430px) {
+  .leaderboard-row, .leaderboard-row.header {
+    font-size: .67em;
+    height: 22px;
+    min-height: 18px;
+    border-radius: 0;
+  }
+  .leaderboard-title { font-size: .93em; margin-bottom: 5px;}
+  .leaderboard-rows { width: 99vw; max-width: 99vw;}
+  .rank-badge { min-width: 22px; max-width: 22px; font-size: .95em; }
+  .lb-name { min-width: 24px; padding-left: 3px;}
+  .lb-year, .lb-fitpoints, .lb-streak, .lb-steps, .lb-dept { min-width: 15px; padding: 0;}
+}
+@media (max-width: 340px) {
+  .leaderboard-title { font-size: .83em; }
+  .leaderboard-row, .leaderboard-row.header {
+    font-size: .53em;
+    height: 15px;
+    min-height: 13px;
+  }
+  .rank-badge { min-width: 14px; max-width: 16px; }
+  .lb-name { min-width: 12px; }
+  .lb-year, .lb-fitpoints, .lb-streak, .lb-steps, .lb-dept { min-width: 8px;}
+}

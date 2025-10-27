@@ -88,15 +88,116 @@
   text-decoration: underline;
 }
 
-/* Responsive styles for mobile */
-@media (max-width: 600px) {
+/* Tablet Responsive */
+@media (max-width: 768px) {
   .inputform {
-    width: 97vw;
+    width: 90vw;
+    max-width: 450px;
+    padding: 24px 20px;
+  }
+
+  .inputform h2 {
+    font-size: 19px;
+    margin-bottom: 8px;
+  }
+
+  .inputform label {
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+
+  .inputform input {
+    font-size: 14px;
+    padding: 6px 10px;
+    margin-bottom: 10px;
+  }
+
+  .inputform button {
+    font-size: 15px;
+    padding: 8px 0;
+  }
+
+  .inputform h4 {
+    font-size: 14px;
+    margin-top: 8px;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+  .signinDiv {
+    padding: 10px;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .inputform {
+    width: 95vw;
+    max-width: 100%;
     min-width: 0;
-    padding: 12px 6px 12px 6px;
+    padding: 16px 12px;
     box-shadow: 0px 2px 8px 1px #0006;
   }
+
   .inputform h2 {
-    font-size: 17px;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .inputform label {
+    font-size: 13px;
+    margin-bottom: 3px;
+  }
+
+  .inputform input {
+    font-size: 13px;
+    padding: 6px 10px;
+    margin-bottom: 8px;
+  }
+
+  .inputform button {
+    font-size: 14px;
+    padding: 7px 0;
+  }
+
+  .inputform h4 {
+    font-size: 12px;
+    margin-top: 8px;
+  }
+
+  .inputform a {
+    font-size: 12px;
+  }
+}
+
+/* Small Mobile (Under 400px) */
+@media (max-width: 400px) {
+  .inputform {
+    padding: 12px 10px;
+    gap: 8px;
+  }
+
+  .inputform h2 {
+    font-size: 15px;
+  }
+
+  .inputform label {
+    font-size: 12px;
+  }
+
+  .inputform input {
+    font-size: 12px;
+    padding: 5px 8px;
+    margin-bottom: 6px;
+  }
+
+  .inputform button {
+    font-size: 13px;
+    padding: 6px 0;
+    margin-top: 0;
+  }
+
+  .inputform h4 {
+    font-size: 11px;
   }
 }

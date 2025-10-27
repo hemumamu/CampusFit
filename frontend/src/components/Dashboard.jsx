@@ -73,21 +73,21 @@ const Dashboard = () => {
                         </h3>
                     </div>
                     <div >
-                        <h3 onClick={() => { setActive('rewards') }}
-                            style={{ cursor: 'pointer', color: active === 'rewards' ? '#37db5e' : 'inherit' }}>
-                            Rewards
-                        </h3>
-                    </div>
-                    <div >
                         <h3 onClick={() => { setActive('tasks') }}
                             style={{ cursor: 'pointer', color: active === 'tasks' ? '#37db5e' : 'inherit' }}>
                             Tasks
                         </h3>
                     </div>
                     <div >
+                        <h3 onClick={() => { setActive('rewards') }}
+                            style={{ cursor: 'pointer', color: active === 'rewards' ? '#37db5e' : 'inherit' }}>
+                            Rewards
+                        </h3>
+                    </div>
+                    <div >
                         <h3 onClick={() => { setActive('myrewards') }}
                             style={{ cursor: 'pointer', color: active === 'myrewards' ? '#37db5e' : 'inherit' }}>
-                            MyRewards
+                            Coupons
                         </h3>
                     </div>
                     <select
@@ -122,6 +122,49 @@ const Dashboard = () => {
                     {active === 'dashboard' &&
                         <div className='detailsDiv'>
                             <div className='dd1'>
+                                <div className='name'>
+                                    <h2 style={{ color: '#37db5e' }}>Hello, {user.name}!</h2>
+                                    <h3>Welcome to Campus Fit</h3>
+                                    <p><strong>Department:</strong> {user.department}</p>
+                                    <div className='googleconnect'>
+                                        <GoogleFitConnect user={user} setUser={setUser} />
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div className='dd2'>
+                                <div className="fitpoints">
+                                    <h2>FitPoints: {user.fitPoints}</h2>
+                                    {user.steps > 0 && (
+                                        <div style={{
+                                            color: getStepsDisplay(user.steps).color,
+                                            fontSize: '1.1em',
+                                            marginTop: '10px'
+                                        }}>
+
+                                        </div>
+                                    )}
+                                </div>
+                                <div className='fitpoints'>
+                                    <h2>🔥 Streaks: {user.streak}</h2>
+
+                                </div>
+                                <div className='fitpoints'>
+                                    <h2>Pushups: {user.pushups}</h2>
+
+                                </div>
+                                <div className='fitpoints'>
+                                    <h2>Squats: {user.squats}</h2>
+
+                                </div>
+
+                            </div>
+
+
+
+
+                            {/* <div className='dd1'>
                                 <div className='name'>
                                     <h2 style={{ color: '#37db5e' }}>Hello, {user.name}!</h2>
                                     <h3>Welcome to Campus Fit</h3>
@@ -169,7 +212,7 @@ const Dashboard = () => {
                                 </div>
                             </div>
 
-
+ */}
 
                         </div>
                     }

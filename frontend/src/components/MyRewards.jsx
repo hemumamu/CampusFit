@@ -7,72 +7,72 @@ const MyRewards = ({ user, setUser }) => {
     const API = import.meta.env.VITE_API
     const [myRewards, setMyRewards] = useState([])
     const token = localStorage.getItem('token')
+
     useEffect(() => {
         const dataFetch = async () => {
-            const res = await axios.get(`${API}/student/myRewards`,
-                { headers: { Authorization: `Bearer ${token}` } })
-            // console.log(res.data.message);
-            // console.log(res.data.fitRewards)
-            setMyRewards(res.data.fitRewards)
+            try {
+                const res = await axios.get(`${API}/student/myRewards`,
+                    { headers: { Authorization: `Bearer ${token}` } })
+                setMyRewards(res.data.fitRewards)
+            } catch (err) {
+                console.error('Error fetching rewards:', err)
+            }
         }
         dataFetch()
+    }, [token])
 
-
-    }, [])
     const handleReward = async (index) => {
         try {
-            const res = await axios.put(`${API}/student/updatemyRewards`, { index }, { headers: { Authorization: `Bearer ${token}` } })
+            const res = await axios.put(
+                `${API}/student/updatemyRewards`, 
+                { index }, 
+                { headers: { Authorization: `Bearer ${token}` } }
+            )
             const updatedrewards = [...myRewards]
             updatedrewards[index] = res.data.reward
             setMyRewards(updatedrewards)
-
-            // alert(res.data.message)
         } catch (err) {
-            console.log(err)
+            console.error('Error claiming reward:', err)
         }
     }
 
-
     return (
-        <div>
-            <div className='myRewards'>
-                <h1 style={{ textAlign: 'center' }}>Your Rewards</h1>
+        <div className='myRewardsContainer'>
+            <div className='myRewardsHeader'>
+                <h1>Your Rewards & Coupons</h1>
             </div>
-            <div>
 
-
-                {
-                    (myRewards.length === 0) ?
-                        <>
-                            <p style={{ color: 'white' }}>You Have no Rewards...</p>
-                        </> : <>
-                            <div className='yourReward'>
-                                {
-                                    myRewards.map((data, index) => (
-                                        <div className='reward' key={index}>
-                                            <div>
-                                                <h3>{data.name}</h3>
-                                                <h5>{data.description}</h5>
-                                                {
-                                                    data.isclaimed ? (<p >{data.coupon}</p>) : (<button onClick={() => { handleReward(index) }} className='rewardBut'>Coupon</button>)
-                                                }
-                                            </div>
-
-
-                                        </div>
-                                    ))
-                                }
-
-                            </div>
-                        </>
-                }
-
-                <div className='myReward'>
-                    <h4 style={{ textAlign: 'center', color: '#37db5e' }}>Note : If you claim the coupon it will expires within one day...</h4>
+            {myRewards.length === 0 ? (
+                <div className='noRewards'>
+                    <p>You have no rewards yet...</p>
+                    <p className='subtext'>Complete tasks and earn FitPoints to unlock rewards!</p>
                 </div>
+            ) : (
+                <div className='yourReward'>
+                    {myRewards.map((data, index) => (
+                        <div className='reward' key={index}>
+                            <h3>{data.name}</h3>
+                            <p className='description'>{data.description}</p>
+                            {data.isclaimed ? (
+                                <div className='couponBox'>
+                                    <p className='couponText'>{data.coupon}</p>
+                                </div>
+                            ) : (
+                                <button 
+                                    onClick={() => handleReward(index)} 
+                                    className='rewardBut'
+                                >
+                                    Claim Coupon
+                                </button>
+                            )}
+                        </div>
+                    ))}
+                </div>
+            )}
 
+            <div className='rewardNote'>
+                <h4>Note: Coupons expire within 24 hours after claiming</h4>
             </div>
-
         </div>
     )
 }

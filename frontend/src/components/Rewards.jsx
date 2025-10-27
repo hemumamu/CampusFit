@@ -7,14 +7,15 @@ import axios from 'axios'
 
 const Rewards = ({ user, setUser }) => {
     const API = import.meta.env.VITE_API
-
     const [activeReward, setActiveReward] = useState("fitpointsReward")
     const [claimedStreakRewards, setClaimedStreakRewards] = useState([])
+
     useEffect(() => {
         if (user && user.claimedStreakRewards) {
             setClaimedStreakRewards(user.claimedStreakRewards);
         }
     }, [user]);
+
     const handleClick = async (item) => {
         if (item.fitPointsRequired <= user.fitPoints) {
             const token = localStorage.getItem('token')
@@ -23,16 +24,13 @@ const Rewards = ({ user, setUser }) => {
                 { headers: { Authorization: `Bearer ${token}` } }
             )
             console.log(res.data.message)
-
             setUser({ ...user, fitPoints: res.data.fitPoints })
-
-
             alert(res.data.message)
-        }
-        else {
-            alert('you have insufficient fitPoints')
+        } else {
+            alert('You have insufficient fitPoints')
         }
     }
+
     const handleClick2 = async (item, index) => {
         if (item.streakDays <= user.streak) {
             const token = localStorage.getItem('token')
@@ -41,33 +39,30 @@ const Rewards = ({ user, setUser }) => {
                 { headers: { Authorization: `Bearer ${token}` } }
             )
             console.log(res.data.message)
-
             setUser({ ...user, fitPoints: res.data.fitPoints, claimedStreakRewards: res.data.claimedStreakRewards })
-            // setClaimedStreakRewards(prev => [...prev, index]);
             setClaimedStreakRewards(res.data.claimedStreakRewards);
-
-
-            alert('you claimed a reward')
-        }
-        else {
-            alert('you have insufficient streaks')
+            alert('You claimed a reward!')
+        } else {
+            alert('You have insufficient streaks')
         }
     }
+
     return (
         <>
-            <div className='info'>
-                <div className='div1'>
-                    {/* <h1 >Reward Section</h1> */}
+            <div className='rewardsInfo'>
+                <div className='rewardsInfoLeft'>
+                    <h2>Reward Section</h2>
                 </div>
-                <div className='div2'>
-                    <div style={{ color: 'white' }}><h3>FitPoints : {user.fitPoints}</h3></div>
-                    <div style={{ color: 'white' }}><h3>Streak : {user.streak}</h3></div>
+                <div className='rewardsInfoRight'>
+                    <div className='rewardStatBox'>
+                        <h3>FitPoints : {user?.fitPoints || 0}</h3>
+                    </div>
+                    <div className='rewardStatBox'>
+                        <h3>🔥 Streak : {user?.streak || 0}</h3>
+                    </div>
                 </div>
+            </div>
 
-            </div>
-            <div className='div1'>
-                <h1 >Reward Section</h1>
-            </div>
             <div className="rewardToggleContainer">
                 <button
                     onClick={() => setActiveReward('fitpointsReward')}
@@ -75,7 +70,6 @@ const Rewards = ({ user, setUser }) => {
                 >
                     FitPoints Rewards
                 </button>
-
                 <button
                     onClick={() => setActiveReward('streakReward')}
                     className={activeReward === 'streakReward' ? 'active' : ''}
@@ -84,43 +78,42 @@ const Rewards = ({ user, setUser }) => {
                 </button>
             </div>
 
-            {
-                activeReward === 'fitpointsReward' ? (
-                    <div className="rewardsContainer">
-
-                        {rewards.map((item, index) => (
-                            <div className="rewardCard" key={index}>
-                                {/* <img src={`/images/${item.image}`} alt={item.name} className="rewardImg" /> */}
-                                <h3>{item.name}</h3>
-                                <p>{item.description}</p>
-
-                                <span className="points">{item.fitPointsRequired} FitPoints </span>
-                                <br />
-                                <button onClick={() => { handleClick(item) }} className='rewardBut'>Claim</button>
-                            </div>
-                        ))}
-                    </div>
-
-                ) : activeReward === 'streakReward' ? (
-                    <div className="rewardsContainer">
-
-                        {streakRewards.map((item, index) => (
-                            <div className="rewardCard" key={index}>
-                                {/* <img src={`/images/${item.image}`} alt={item.name} className="rewardImg" /> */}
-                                <h3>{item.name}</h3>
-                                <p>{item.description}</p>
-
-                                <span className="points">{item.fitReward} FitPoints </span>
-                                <br />
-                                <button onClick={() => { handleClick2(item, index) }} className='rewardBut' disabled={claimedStreakRewards.includes(index)}>{claimedStreakRewards.includes(index) ? 'Claimed' : 'claim'}</button>
-                            </div>
-                        ))}
-                    </div>
-                ) : <>Loading...</>
-
-            }
-
-
+            {activeReward === 'fitpointsReward' ? (
+                <div className="rewardsContainer">
+                    {rewards.map((item, index) => (
+                        <div className="rewardCard" key={index}>
+                            <h3>{item.name}</h3>
+                            <p>{item.description}</p>
+                            <span className="points">{item.fitPointsRequired} FitPoints</span>
+                            <button 
+                                onClick={() => handleClick(item)} 
+                                className='rewardBut'
+                            >
+                                Claim
+                            </button>
+                        </div>
+                    ))}
+                </div>
+            ) : activeReward === 'streakReward' ? (
+                <div className="rewardsContainer">
+                    {streakRewards.map((item, index) => (
+                        <div className="rewardCard" key={index}>
+                            <h3>{item.name}</h3>
+                            <p>{item.description}</p>
+                            <span className="points">{item.fitReward} FitPoints</span>
+                            <button 
+                                onClick={() => handleClick2(item, index)} 
+                                className='rewardBut' 
+                                disabled={claimedStreakRewards.includes(index)}
+                            >
+                                {claimedStreakRewards.includes(index) ? 'Claimed' : 'Claim'}
+                            </button>
+                        </div>
+                    ))}
+                </div>
+            ) : (
+                <div className="loading">Loading...</div>
+            )}
         </>
     )
 }
