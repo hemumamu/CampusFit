@@ -146,7 +146,7 @@ router.put('/updaterewards', async (req, res) => {
             return res.json({message:"ifsufficient fitpoints"})
         }
         // console.log(item)
-        const remaining = details.fitPoints - item.fitPointsRequired
+        const remaining =await details.fitPoints - item.fitPointsRequired
         details.fitPoints = remaining
         res.json({ message: "successfully updated rewards", fitPoints: remaining, rewards: details.rewards })
         await details.save()
