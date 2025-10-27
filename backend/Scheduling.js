@@ -4,23 +4,23 @@ import tranporter from './mailer.js'
 import rewards from '../frontend/src/Data/FitPointRewards.js'
 
 
-const streakMail=async(name,streak,email)=>{
-    await tranporter.sendMail({
-        from:process.env.EMAIL,
-        to:email,
-        subject:'CampusFit League',
-        html:`
-        <h3>Hey ${name} , </h3>
-        <h4>Your current streak is ${streak}</h4>
-        <p>complete today tasks , and win more fitPoints and more rewards</p>
-        <P>Your Friends are in the better position in the LeaderBoard... come login and complete tasks to gain Streak</p>
-        `
+// const streakMail=async(name,streak,email)=>{
+//     await tranporter.sendMail({
+//         from:process.env.EMAIL,
+//         to:email,
+//         subject:'CampusFit League',
+//         html:`
+//         <h3>Hey ${name} , </h3>
+//         <h4>Your current streak is ${streak}</h4>
+//         <p>complete today tasks , and win more fitPoints and more rewards</p>
+//         <P>Your Friends are in the better position in the LeaderBoard... come login and complete tasks to gain Streak</p>
+//         `
 
 
-    })
+//     })
     
 
-}
+// }
 
 cron.schedule('0 0 * * *',async()=>{
     try{
@@ -45,24 +45,24 @@ cron.schedule('0 0 * * *',async()=>{
 
 
 
-cron.schedule('0 9 * * *',async()=>{
-    try{
-        const users=await RegisterModel.find({streak:{$lt:1}})
-        for(const user of users){
+// cron.schedule('0 9 * * *',async()=>{
+//     try{
+//         const users=await RegisterModel.find({streak:{$lt:1}})
+//         for(const user of users){
 
-            await streakMail(user.name,user.streak,user.email)
-            console.log(`email sent to ${user.name}`)
+//             await streakMail(user.name,user.streak,user.email)
+//             console.log(`email sent to ${user.name}`)
 
-        }
-        console.log('All remainders sent!')
+//         }
+//         console.log('All remainders sent!')
 
-    }catch(err){
-        console.log(err)
+//     }catch(err){
+//         console.log(err)
 
-    }
+//     }
 
 
-}, { timezone: "Asia/Kolkata" })
+// }, { timezone: "Asia/Kolkata" })
 
 cron.schedule('*/10 * * * *',async()=>{
     try{
