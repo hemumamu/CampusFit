@@ -3,7 +3,7 @@ const dailyTasks=[
     
       "title": "Walking",
       "type": "walking",
-      "target": 400,
+      "target": 4000,
       "unit": "steps",
       "fitPoints": 20,
       "status": "pending"
