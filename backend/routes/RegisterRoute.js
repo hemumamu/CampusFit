@@ -145,8 +145,8 @@ router.put('/updaterewards', async (req, res) => {
         // console.log(item)
         const remaining = details.fitPoints - item.fitPointsRequired
         details.fitPoints = remaining
+        res.json({ message: "successfully updated rewards", fitPoints: remaining, rewards: details.rewards })
         await details.save()
-        return res.json({ message: "successfully updated rewards", fitPoints: remaining, rewards: details.rewards })
     } catch (err) {
         console.log(err)
         return res.status(500).json({ message: "server error" })
