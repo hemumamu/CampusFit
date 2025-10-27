@@ -227,12 +227,12 @@ router.put('/updatemyRewards', async (req, res) => {
         reward.expiresAt = expire
         await details.save()
         res.json({ message: 'Coupon claimed', reward })
-        await tranporter.sendMail({
-            to:process.env.EMAIL,
-            from:process.env.EMAIL,
-            subject:'Coupon claimed',
-            text:`Coupon ( ${coupon} ) claimed by ${details.name} at  ${new Date().toLocaleTimeString()} on ${new Date().toDateString()}`
-        })
+        // await tranporter.sendMail({
+        //     to:process.env.EMAIL,
+        //     from:process.env.EMAIL,
+        //     subject:'Coupon claimed',
+        //     text:`Coupon ( ${coupon} ) claimed by ${details.name} at  ${new Date().toLocaleTimeString()} on ${new Date().toDateString()}`
+        // })
         console.log(reward.coupon)
 
     } catch (err) {
