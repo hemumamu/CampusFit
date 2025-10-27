@@ -116,7 +116,7 @@ router.put('/updatepoints', async (req, res) => {
         }
         if (dailyTasks.length === details.completedTasks.length + 1) {
             details.streak += 1;
-            details.lastCompleted = new Date().toDateString ();
+            details.lastCompleted = new Date().toDateString();
         }
 
         details.fitPoints += points
@@ -133,27 +133,39 @@ router.put('/updatepoints', async (req, res) => {
 
 router.put('/updaterewards', async (req, res) => {
     try {
-        const authHeader = req.headers.authorization
-        const token = authHeader.split(" ")[1]
-        const decoded = jwt.verify(token, secretKey)
-        const details = await RegisterModel.findById(decoded.id);
+        const authHeader = req.headers.authorization;
+        const token = authHeader.split(" ")[1];
+        const decoded = jwt.verify(token, secretKey);
+
+        const item = req.body;
+
+        // Perform atomic update only if user has enough points
+        const details = await RegisterModel.findOneAndUpdate(
+            {
+                _id: decoded.id,
+                fitPoints: { $gte: item.fitPointsRequired } // check sufficient points
+            },
+            {
+                $inc: { fitPoints: -item.fitPointsRequired }, // safely subtract points
+                $push: { rewards: item } // add reward
+            },
+            { new: true }
+        );
+
         if (!details) {
-            return res.status(400).json({ message: "User not found" })
+            return res.status(400).json({ message: "Insufficient fitpoints or user not found" });
         }
-        const item = req.body
-        details.rewards.push(item)
-        // console.log(item)
-        const remaining =await details.fitPoints - item.fitPointsRequired
-        if(details.fitPoints<=0){
-            return res.json({message:"ifsufficient fitpoints",fitPoints: remaining, rewards: details.rewards})
-        }
-        details.fitPoints = remaining
-        res.json({ message: "successfully updated rewards", fitPoints: remaining, rewards: details.rewards })
-        await details.save()
-    } catch (err) {
-        console.log(err)
-        return res.status(500).json({ message: "server error" })
+
+        res.json({
+            message: "Successfully updated rewards",
+            fitPoints: details.fitPoints,
+            rewards: details.rewards
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Server error" });
     }
+
 
 })
 router.put('/updatestreakrewards', async (req, res) => {
@@ -165,13 +177,13 @@ router.put('/updatestreakrewards', async (req, res) => {
         if (!details) {
             return res.status(400).json({ message: "User not found" })
         }
-        const {item,index} = req.body
+        const { item, index } = req.body
         if (!item) {
             return res.status(400).json({ message: "No reward item provided" });
         }
         // console.log(item)
         item.isclaimed = true
-         if (details.claimedStreakRewards.includes(index)) {
+        if (details.claimedStreakRewards.includes(index)) {
             return res.status(400).json({ message: "You already claimed this reward!" });
         }
         details.streakRewards.push(item)
@@ -181,7 +193,7 @@ router.put('/updatestreakrewards', async (req, res) => {
         await details.save()
         console.log('successfully updated fitpoints')
         console.log(details.claimedStreakRewards)
-        return res.json({ message: "successfully updated fitpoints", fitPoints: details.fitPoints ,claimedStreakRewards:details.claimedStreakRewards})
+        return res.json({ message: "successfully updated fitpoints", fitPoints: details.fitPoints, claimedStreakRewards: details.claimedStreakRewards })
 
     } catch (err) {
         console.log(err)
@@ -201,10 +213,10 @@ router.get('/myRewards', async (req, res) => {
         if (!details) {
             return res.status(400).json({ message: "User not found" })
         }
-        const fitRewards =await details.rewards
-       
+        const fitRewards = await details.rewards
+
         res.json({ message: "successfully data fetched", fitRewards });
-        
+
     } catch (err) {
         console.log(err)
         return res.status(500).json({ message: "sever error" })
