@@ -92,7 +92,7 @@ const Dashboard = () => {
                     </div>
                     <select
                         style={{
-                            background: "#232323",
+                           
                             color: "#fff",
                             padding: "6px 5px",
                             borderRadius: "7px",
