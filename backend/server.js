@@ -12,8 +12,8 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 // console.log(process.env.MONGO_URL)
-// const   PORT=process.env.PORT || 3000
 
+const PORT = process.env.PORT || 4000;
 const conn =await mongoose.connect(process.env.MONGO_URL)
     .then(() => {
         console.log('database connected successfully')
@@ -30,6 +30,6 @@ app.get('/', (req, res) => {
 
 startCronJobs()
 
-app.listen(4000, () => {
+app.listen(PORT, () => {
     console.log('server is running')
 })
