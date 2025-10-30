@@ -26,6 +26,7 @@ app.use('/student',RegisterRoute)
 
 app.get('/', (req, res) => {
     res.send('this is get request')
+    console.log('this is get')
 })
 
 startCronJobs()
