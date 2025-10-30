@@ -41,7 +41,7 @@ cron.schedule('0 0 * * *',async()=>{
     }catch(err){
         console.log(err);
     }
-})
+},"Asia/Kolkata")
 
 
 
@@ -81,7 +81,7 @@ cron.schedule('*/10 * * * *',async()=>{
     }catch(err){
         console.log(err)
     }
-})
+},{timezone: "Asia/Kolkata"})
 export default function startCronJobs(){
     console.log('your schedules are working');
 
